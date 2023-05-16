@@ -35,7 +35,7 @@
 				<img src="{{asset('theme_fontend/img/home/test-2.jpg')}}" alt="Chicago">
 			</div>
 			<div class="carousel-item">
-				<img src="{{asset('theme_fontend/img/home/slide-3.png')}}" alt="New York" >
+				<img src="{{asset('theme_fontend/img/home/slider-3.png')}}" alt="New York" >
 			</div>
 		</div>
 
@@ -57,8 +57,8 @@
 		<div class="product-list row">
 			@foreach($hot as $item)
 
-			<div class="product-item col-md-4 col-sm-6 col-xs-12">
-				<a href="#"><img src="{{asset('/storage/app/avatar/'.$item->p_image)}}" class="img-thumbnail"></a>
+			<div class="product-item col-md-3 col-sm-6 col-xs-12">
+				<a href="#"><img src="{{asset('/storage/avatar/'.$item->p_image)}}" class="img-thumbnail"></a>
 				<p><a href="#">{{$item->p_name}}</a></p>
 				<p class="price">{{number_format($item->p_price,0,',','.')}}</p>	  
 				<div class="marsk">
@@ -76,8 +76,8 @@
 		<div class="product-list row">
 			@foreach($news as $item)
 
-			<div class="product-item col-md-4 col-sm-6 col-xs-12">
-				<a href="#"><img src="{{asset('/storage/app/avatar/'.$item->p_image)}}" class="img-thumbnail"></a>
+			<div class="product-item col-md-3 col-sm-6 col-xs-12">
+				<a href="#"><img src="{{asset('/storage/avatar/'.$item->p_image)}}" class="img-thumbnail"></a>
 				<p><a href="#">{{$item->p_name}}</a></p>
 				<p class="price">{{number_format($item->p_price,0,',','.')}}</p>	  
 				<div class="marsk">

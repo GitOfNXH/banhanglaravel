@@ -59,10 +59,13 @@ class AdminProductController extends Controller
         $result =1;
         try {
             $product = new Product();
-            if ($p_id){
+            if ($p_id) {
                 $product = Product::find($p_id);
+                $img = $requestProduct->img;
+            } else {
+                $img = $requestProduct->file('img');
             }
-            $filename = $requestProduct->img->getClientOriginalName();
+            $filename = $img->getClientOriginalName();
             $product->p_name = $requestProduct->p_name;
             $product->p_description =  $requestProduct->p_description;
             $product->p_slug =  str_slug($requestProduct->p_name);
@@ -77,7 +80,7 @@ class AdminProductController extends Controller
             $product->p_active =  $requestProduct->p_active ? 1 : 0;
             $product->p_condition =  $requestProduct->p_condition;
             $product->prod_cate = $requestProduct->prod_cate;
-            $requestProduct->img->storeAs('avatar',$filename);
+            $img->storePubliclyAs('/public/avatar', $filename);
             
             $product->save();
         } catch (Exception $e) {

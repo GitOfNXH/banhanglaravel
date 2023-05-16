@@ -57,7 +57,7 @@
 						<td >{{ $product->p_name }}</td>						
 						<td>{{ number_format($product->p_price,0,',','.') }} VNĐ</td>
 						<td>
-						<img src="{{ asset('/storage/app/avatar/'.$product->p_image) }}" alt="" class="thumbnail" width="100px" height="100px">
+						<img src="{{ asset('/storage/avatar/'.$product->p_image) }}" alt="" class="thumbnail" width="100px" height="100px">
 						</td>
 						<td>{{ $product->p_condition }}</td>
 						<td>{{ $product->p_status }} </td>

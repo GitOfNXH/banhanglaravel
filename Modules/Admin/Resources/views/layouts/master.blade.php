@@ -116,7 +116,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                               <li><a href="{{ route('admin.get.create.product') }}">Thêm sản phẩm</a></li>
                           </ul>
                       </li>
-                      <li class="sub-menu">
+                      <!-- <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
                             <span>Danh mục sản phẩm</span>
@@ -124,8 +124,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <ul class="sub">
                           <li><a href="{{ URL::to('/add-category-product') }}">Thêm danh mục sản phẩm</a></li>
                           <li><a href="{{ URL::to('/all-category-product') }}">Danh sách sản phẩm</a></li>
-                      </ul>
-                  </li>
+                        </ul>
+                  </li> -->
 
               </ul>            </div>
               <!-- sidebar menu end-->
