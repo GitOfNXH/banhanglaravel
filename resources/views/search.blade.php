@@ -23,7 +23,7 @@
 			@foreach($searchKey as $item)
 
 			<div class="product-item col-md-4 col-sm-6 col-xs-12">
-				<a href="#"><img src="{{asset('/storage/app/avatar/'.$item->p_image)}}" class="img-thumbnail"></a>
+				<a href="#"><img src="{{asset('/storage/avatar/'.$item->p_image)}}" class="img-thumbnail"></a>
 				<p><a href="#">{{$item->p_name}}</a></p>
 				<p class="price">{{number_format($item->p_price,0,',','.')}}</p>	  
 				<div class="marsk">

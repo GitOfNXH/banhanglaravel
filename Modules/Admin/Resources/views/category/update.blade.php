@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Trang tổng quan</a></li>
+			<li class="breadcrumb-item"><a href="{{URL::to ('/admin') }}">Trang tổng quan</a></li>
 			<li class="breadcrumb-item"><a href="{{ route('admin.get.list.category') }}">Danh mục sản phẩm</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Cập nhật danh mục sản phẩm</li>
 		</ol>

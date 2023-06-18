@@ -42,7 +42,7 @@
 
 			@foreach($items as $item)
 			<tr>
-				<td><img class="img-responsive" src="{{asset('/storage/app/avatar/'.$item->options->img)}}"></td>
+				<td><img class="img-responsive" src="{{asset('/storage/avatar/'.$item->options->img)}}"></td>
 				<td>{{ $item->name }}</td>
 				<td>
 					<div class="form-group">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,8 +11,7 @@ class Category extends Model
 	
     protected $table = 'categories';
     protected $primaryKey = 'c_id';
-    protected $guarded = ['']; //các giá trị trong đây sẽ không lấy
-    //fillable lấy các thuộc tính có trong đó
+    protected $fillable = ['c_id', 'c_name', 'c_slug', 'c_icon', 'c_active', 'c_total_product'];
 
 
     protected $status = [
@@ -23,8 +22,9 @@ class Category extends Model
     		'name' => 'Private',
     	]
     ];
-     public function getStatus($value)
+
+    public function getStatus($value)
     {
-    	return array_get($this->status,$value,'[N\A]');
+    	return array_get($this->status, $value, '[N\A]');
     }
 }

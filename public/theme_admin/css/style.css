@@ -1633,7 +1633,7 @@ ul.bs-glyphicons-list {
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .table-agile-info{
-    background: #eef9f0;
+    background: #dde1ff;
     padding: 2em;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -1648,7 +1648,7 @@ ul.bs-glyphicons-list {
 }
 .panel-default>.panel-heading {
     color: #000000 ! important;
-    background-color: #ddede0 ! important;
+    background-color: #8fbef6 ! important;
     border-color: #ddede0 ! important;
     font-size: 20px;
 }
@@ -3145,4 +3145,9 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
 .chart_agile_bottom {
     padding: 0;
 }
+}
+.alert-success {
+	width: 50%;
+    float: right;
+    margin: 20px 0;
 }

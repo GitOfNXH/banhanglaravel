@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Models\Product;
-use App\Models\Models\Category;
-use App\Models\Models\Comment;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Comment;
 
 class WebbhController extends Controller
 {
@@ -26,7 +26,7 @@ class WebbhController extends Controller
 
     public function getCategory($id)
     {
-        $viewData['prodcate'] = Product::where('prod_cate',$id)->orderBy('p_id','desc')->paginate(1);
+        $viewData['prodcate'] = Product::where('prod_cate',$id)->orderBy('p_id','desc')->paginate(6);
         $viewData['cateName'] = Category::find($id);
         return view('category',$viewData);
     }

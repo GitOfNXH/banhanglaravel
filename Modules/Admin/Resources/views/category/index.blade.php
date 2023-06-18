@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Trang tổng quan</a></li>
+			<li class="breadcrumb-item"><a href="{{URL::to ('/admin') }}">Trang tổng quan</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Danh mục sản phẩm</li>
 		</ol>
 	</div>
@@ -18,6 +18,12 @@
 		<div class="themmoi text-center" style = "margin-top:10px">
 			<a href="{{ route('admin.get.create.category') }}" class="btn btn-primary ">Thêm danh mục</a>
 		</div>
+		@if(session('status'))
+			<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close" style="right:0">&times;</a>
+				<h4>{{ session('status') }}</h4>
+			</div>
+		@endif
 		<div class="row w3-res-tb">			
 			<div class="col-sm-3 m-b-xs">
 				<div class="input-group">

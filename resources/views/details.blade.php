@@ -4,7 +4,7 @@
 @section('left')
 <link rel="stylesheet" href="{{ asset('theme_fontend/css/detail.css') }}">
 <div class="img-zoom-container">
-	<img id="myimage" src="{{asset('/storage/app/avatar/'.$item->p_image)}}" width="300" height="240" alt="Girl">
+	<img id="myimage" src="{{asset('/storage/avatar/'.$item->p_image)}}" width="300" height="240" alt="Girl">
 	<div id="myresult" class="img-zoom-result"></div>
 </div>
 

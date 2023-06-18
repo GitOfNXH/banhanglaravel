@@ -18,17 +18,17 @@ Route::prefix('admin')->group(function() {
 		Route::get('/','AdminCategoryController@index') -> name('admin.get.list.category');
 		Route::get('/create','AdminCategoryController@create') -> name('admin.get.create.category');
 		Route::post('/create','AdminCategoryController@store');
-		Route::get('/update/{id}','AdminCategoryController@edit')->name('admin.get.edit.category');
-		Route::post('/update/{id}','AdminCategoryController@update');
-		Route::get('/detroy/{id}','AdminCategoryController@detroyX')->name('admin.get.detroy.category');
+		Route::get('/update/{c_id}','AdminCategoryController@edit')->name('admin.get.edit.category');
+		Route::post('/update/{c_id}','AdminCategoryController@update');
+		Route::get('/detroy/{c_id}','AdminCategoryController@detroyX')->name('admin.get.detroy.category');
 	});
 
 	Route::group(['prefix' => 'product'],function(){
 		Route::get('/','AdminProductController@index') -> name('admin.get.list.product');
 		Route::get('/create','AdminProductController@create') -> name('admin.get.create.product');
 		Route::post('/create','AdminProductController@store');
-		Route::get('/update/{id}','AdminProductController@edit')->name('admin.get.edit.product');
-		Route::post('/update/{id}','AdminProductController@update');
-		Route::get('/detroy/{id}','AdminProductController@detroyX')->name('admin.get.detroy.product');
+		Route::get('/update/{p_id}','AdminProductController@edit')->name('admin.get.edit.product');
+		Route::post('/update/{p_id}','AdminProductController@update');
+		Route::get('/detroy/{p_id}','AdminProductController@detroyX')->name('admin.get.detroy.product');
 	});
 });

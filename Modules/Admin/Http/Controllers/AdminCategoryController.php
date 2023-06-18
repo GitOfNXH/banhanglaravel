@@ -6,8 +6,9 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Http\Requests\RequestCategory;
-use App\Models\Models\Category;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Category;
 class AdminCategoryController extends Controller
 {
     /**
@@ -20,51 +21,54 @@ class AdminCategoryController extends Controller
         $viewData = [
             'categories' => $categories
         ];
-        return view('admin::category.index',$viewData);
+        return view('admin::category.index', $viewData);
 
     }
-    public function create(){
+
+    public function create()
+    {
     	return view ('admin::category.create');
     }
-    public function store(RequestCategory $requestCategory){
-        //dd($requestCategory->all());
-        $this->insertOrUpdate($requestCategory);
 
-        return redirect()->back();
+    public function store(StoreCategoryRequest $request)
+    {
+        $category = new Category();
+        $category->c_name = $request->name;
+        $category->c_icon =  $request->icon;
+        $category->c_slug =  str_slug($request->name);
+        if (!$request->active) {
+            $category->c_active = 0;
+        }
+        $category->save();
+
+        return redirect('admin/category')->with('status', 'Thêm danh mục thành công');
     }
-    public function edit($id){
+
+    public function edit($id)
+    {
         $category = Category::find($id);
         
-        return view('admin::category.update',compact('category'));
+        return view('admin::category.update', compact('category'));
     }
-    public function update(RequestCategory $requestCategory,$id){
-        
-        $this->insertOrUpdate($requestCategory,$id);
 
-        return redirect()->back();
-    }
-    public function insertOrUpdate(RequestCategory $requestCategory,$id=''){
-        $result =1;
-        try {
-            $category = new Category();
-            if ($id){
-                $category = Category::find($id);
-            }
-            $category->c_name = $requestCategory->name;
-            $category->c_icon =  $requestCategory->icon;
-            $category->c_slug =  str_slug($requestCategory->name);
-            if (!$requestCategory->active) $category->c_active =0;           
-            $category->save();
-        } catch (Exception $e) {
-            $result =0;
-            Log::error("[Error insertUpdate Category]".$e->getMessage());
+    public function update(UpdateCategoryRequest $request, $c_id)
+    {
+        $category = Category::find($c_id);
+        $category->c_name = $request->name;
+        $category->c_icon =  $request->icon;
+        $category->c_slug =  str_slug($request->name);
+        if (!$request->active) {
+            $category->c_active = 0;
         }
-        return $result;
+        $category->save();
+
+        return redirect('admin/category')->with('status', 'Sửa danh mục thành công');
     }
-    public function detroyX($id){
+
+    public function detroyX($id)
+    {
         Category::find($id)->delete();
-        return redirect()->back();
+
+        return redirect()->back()->with('status', 'Xoá danh mục thành công');
     }
-
-
 }

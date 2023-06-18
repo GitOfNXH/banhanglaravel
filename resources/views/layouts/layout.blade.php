@@ -177,7 +177,7 @@
 						<span class="header__cart-notice">3</span>
 						<!-- no cart: header__cart-list--no-cart -->
 						<div class="header__cart-list">
-							<img src="./assets/img/no_card.jpg" alt="" class="header__cart-list--no-cart-img">
+							<img src="{{ asset('theme_fontend/img/home/no_card.jpg') }}" alt="" class="header__cart-list--no-cart-img">
 							<span class="header__cart-list--no-cart-msg">
 								Chưa có sản phẩm
 							</span>

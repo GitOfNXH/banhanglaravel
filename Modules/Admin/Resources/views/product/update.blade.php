@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Trang tổng quan</a></li>
+			<li class="breadcrumb-item"><a href="{{URL::to ('/admin') }}">Trang tổng quan</a></li>
 			<li class="breadcrumb-item"><a href="{{ route('admin.get.list.product') }}">Sản phẩm</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Cập nhật sản phẩm</li>
 		</ol>
@@ -56,7 +56,7 @@
 						<label class="col-lg-3 control-label">Ảnh sản phẩm</label>
 						<div class="col-lg-6">
 							<input id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
-							<img id="avatar" style="cursor: pointer;" class="thumbnail" width="200px" src="{{asset('storage/app/avatar/'.$product->p_image)  }}">
+							<img id="avatar" style="cursor: pointer;" class="thumbnail" width="200px" src="{{asset('storage/avatar/'.$product->p_image)  }}">
 						</div>
 					</div>
 
@@ -174,6 +174,15 @@
 			$('#avatar').click(function(){
 				$('#img').click();
 			});
+			CKEDITOR.replace( 'p_description', {
+				filebrowserBrowseUrl: '../../public/theme_admin/ckfinder/ckfinder.html',
+				filebrowserImageBrowseUrl: '../../public/theme_admin/ckfinder/ckfinder.html?Type=Images',
+				filebrowserUploadUrl: '../../public/theme_admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+				filebrowserImageUploadUrl: '../../public/theme_admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+				filebrowserWindowWidth : '1000',
+				filebrowserWindowHeight : '700'
+			});
 		});
+		
 	</script>
 @stop

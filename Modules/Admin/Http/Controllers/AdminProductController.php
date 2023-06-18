@@ -5,9 +5,10 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Http\Requests\RequestProduct;
-use App\Models\Models\Product;
-use App\Models\Models\Category;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
+use App\Models\Product;
+use App\Models\Category;
 use DB;
 class AdminProductController extends Controller
 {
@@ -18,6 +19,7 @@ class AdminProductController extends Controller
     public function index()
     {
         $viewData['productList'] = DB::table('products')->join('categories','products.prod_cate','=','categories.c_id')->orderBy('p_id','desc')->get();
+
         return view('admin::product.index',$viewData);
     }
 
@@ -27,7 +29,6 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-
         $viewData['cateList'] = Category::all();
 
         return view('admin::product.create',$viewData);
@@ -38,62 +39,74 @@ class AdminProductController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(RequestProduct $requestProduct){
-        //dd($requestProduct->all());
+    public function store(StoreProductRequest $requestProduct)
+    {
         $this->insertOrUpdate($requestProduct);
 
-        return redirect()->back();
+        return redirect('admin/product')->with('status', 'Thêm sản phẩm thành công');
     }
-    public function edit($id){
+
+    public function edit($id)
+    {
         $viewData['product'] = Product::find($id);
         $viewData['listCate'] = Category::all();
+
         return view('admin::product.update',$viewData);
     }
-    public function update(RequestProduct $requestProduct,$p_id){
 
-        $this->insertOrUpdate($requestProduct,$p_id);
+    public function update(UpdateProductRequest $requestProduct, $p_id)
+    {
+        $this->insertOrUpdate($requestProduct, $p_id);
 
-        return redirect('admin/product');
+        return redirect('admin/product')->with('status', 'Sửa sản phẩm thành công');
     }
-    public function insertOrUpdate(RequestProduct $requestProduct,$p_id=''){
-        $result =1;
+
+    public function insertOrUpdate($requestProduct, $p_id = '')
+    {
+        $result = 1;
         try {
-            $product = new Product();
             if ($p_id) {
                 $product = Product::find($p_id);
-                $img = $requestProduct->img;
             } else {
+                $product = new Product();
                 $img = $requestProduct->file('img');
+                $filename = $img->getClientOriginalName();
+                $img->storePubliclyAs('/public/avatar', $filename);
+                $product->p_image = $filename;
             }
-            $filename = $img->getClientOriginalName();
             $product->p_name = $requestProduct->p_name;
-            $product->p_description =  $requestProduct->p_description;
-            $product->p_slug =  str_slug($requestProduct->p_name);
-            $product->p_price =  $requestProduct->p_price;
-            $product->p_promotion =  $requestProduct->p_promotion;
-            $product->p_status =  $requestProduct->p_status;
+            $product->p_description = $requestProduct->p_description;
+            $product->p_slug = str_slug($requestProduct->p_name);
+            $product->p_price = $requestProduct->p_price;
+            $product->p_promotion = $requestProduct->p_promotion;
+            $product->p_status = $requestProduct->p_status;
             $product->p_warranty = $requestProduct->p_warranty;
             $product->p_accessories = $requestProduct->p_accessories;
             $product->p_description = $requestProduct->p_description;
-            $product->p_image =  $filename;
-            $product->p_hot =  $requestProduct->p_hot ? 1 : 0;
-            $product->p_active =  $requestProduct->p_active ? 1 : 0;
-            $product->p_condition =  $requestProduct->p_condition;
+            $product->p_hot = $requestProduct->p_hot ? 1 : 0;
+            $product->p_active = $requestProduct->p_active ? 1 : 0;
+            $product->p_condition = $requestProduct->p_condition;
             $product->prod_cate = $requestProduct->prod_cate;
-            $img->storePubliclyAs('/public/avatar', $filename);
             
             $product->save();
         } catch (Exception $e) {
             $result =0;
             Log::error("[Error insertUpdate product]".$e->getMessage());
         }
+
         return $result;
     }
-    public function detroyX($id){
+
+    public function detroyX($id)
+    {
         product::find($id)->delete();
-        return redirect()->back();
+
+        return redirect()->back()->with('status', 'Xoá sản phẩm thành công');
     }
-    public function getCategories(){
+
+    public function getCategories()
+    {
         return Category::all();
     }
+
 }
