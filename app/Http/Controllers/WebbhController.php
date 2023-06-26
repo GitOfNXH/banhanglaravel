@@ -13,7 +13,7 @@ class WebbhController extends Controller
     public function index()
     {
         $viewData['hot'] = Product::where('p_hot',1)->orderBy('p_id','desc')->take(4)->get();
-    	$viewData['news'] = Product::orderBy('p_id','desc')->take(4)->get();
+    	$viewData['news'] = Product::orderBy('p_id','desc')->take(8)->get();
     	return view('welcome',$viewData);
     }
 

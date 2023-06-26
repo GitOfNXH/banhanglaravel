@@ -330,11 +330,7 @@
 					menu.removeAttr('style');
 				}
 			});
-		</script>
-		
-		<script>
-			imageZoom("myimage", "myresult");
-		</script>
+		</script>		
 	</footer>
 </body>
 </html>

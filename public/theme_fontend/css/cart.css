@@ -38,6 +38,7 @@ body{
 	color: #ff9600;
 	font-size: 12px;
 }	
+
 @media (min-width: 768px) {
 	.navbar-form .input-group .form-control,
 	.navbar-form .input-group .input-group-btn{
@@ -190,6 +191,7 @@ padding-left: 12px;
 }
 .form-control{
 	border-radius: 0px;
+	font-size: 13px;
 }
 /* end table */
 .price{
@@ -211,10 +213,10 @@ padding-left: 12px;
 }
 
 #footer-b{
-	background: #FF6700;
 	color: #fff;
 	font-size: 13px;
 	position: relative;
+	background-color: #f53e2c;
 }
 #footer-b p{
 	margin: 0;

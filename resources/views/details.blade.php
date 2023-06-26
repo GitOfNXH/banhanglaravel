@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="{{ asset('theme_fontend/css/detail.css') }}">
 <div class="img-zoom-container">
 	<img id="myimage" src="{{asset('/storage/avatar/'.$item->p_image)}}" width="300" height="240" alt="Girl">
-	<div id="myresult" class="img-zoom-result"></div>
 </div>
 
 @endsection
@@ -17,7 +16,7 @@
 		<h3>{{ $item->p_name }}</h3>
 
 		<div id="product-details" >
-			<?php $price = $item->p_price*$item->p_price/100; ?>
+			<?php $price = $item->p_price - $item->p_promotion; ?>
 			<p>Giá: <span class="price"><del>{{number_format($item->p_price,0,',','.')}}</del> </span> 
 				<span class="price" style="font-size: 30px"> {{number_format($price,0,',','.')}} </span></p>
 				<p>Bảo hành: {{ $item->p_warranty }}</p> 

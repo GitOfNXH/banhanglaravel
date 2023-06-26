@@ -69,11 +69,12 @@
 }
 
 #footer-b{
-	background: #FF6700;
 	color: #fff;
 	font-size: 13px;
 	position: relative;
+	background-color: #f53e2c;
 }
+
 #footer-b p{
 	margin: 0;
 	height: 100px;
