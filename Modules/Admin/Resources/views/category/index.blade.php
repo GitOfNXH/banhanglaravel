@@ -63,7 +63,7 @@
 						</td>
 						<td>{{ $category->getStatus($category->c_active)['name'] }}</td>
 						<td>
-							<a href="{{ route('admin.get.edit.category',$category->c_id) }}" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i></a>
+							<a href="{{ route('admin.get.edit.category',$category->c_id) }}" ui-toggle-class=""><i class="fa fa-edit"></i></a>
 							<a href="{{ route('admin.get.detroy.category',$category->c_id) }}"><i class="fa fa-times text-danger text"></i></a>
 						</td>
 					</tr>
